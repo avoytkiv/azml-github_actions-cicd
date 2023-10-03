@@ -22,8 +22,10 @@
 				"GitHub.copilot",
 				"ms-toolsai.vscode-ai-remote",
 				"ms-toolsai.vscode-ai"
-			]
+			],
+	    "onCreateCommand": "az extension add -n ml -y"
         }
     }
 }
 	
+

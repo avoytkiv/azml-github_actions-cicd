@@ -21,3 +21,5 @@ Running a training job:
 ```shell
 az ad sp create-for-rbac --name "test-principal" --role contributor --scopes /subscriptions/a8c5d49d-e0aa-4576-97cc-fa6b18ce0f6a resourceGroups/RG001 --json-auth
 ```
+   
+![job output](https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/c78084f5-3800-41d0-847b-de8d42d3f774)

@@ -33,11 +33,11 @@ def main(args):
     X_train, X_test, y_train, y_test = train_test_split(df.drop("Diabetic", axis=1), df["Diabetic"], test_size=0.2, random_state=42)
 
     # train model
-    train_model(args.reg_rate, X_train, X_test, y_train, y_test)
+    train_model(args.reg_rate, X_train, y_train)
 
 
 def get_csvs_df(path):    
-    path = parent_dir + "/" + path
+    # path = parent_dir + "/" + path
     if not os.path.exists(path):
         raise RuntimeError(f"Cannot use non-existent path provided: {path}")
     csv_files = glob.glob(f"{path}/*.csv")

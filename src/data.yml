@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+type: uri_folder
+name: diabetes-dev-folder
+description: The data is already preprocessed and requires no feature engineering.
+path: ../experimentation/data/

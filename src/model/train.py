@@ -20,8 +20,9 @@ parent_dir = os.path.dirname(os.path.dirname(current_dir))
 # Add the root directory to the python path
 sys.path.append(parent_dir)
 
-# define functions
+
 def main(args):
+
     # TO DO: enable autologging
     mlflow.sklearn.autolog()
 
@@ -29,13 +30,19 @@ def main(args):
     df = get_csvs_df(args.training_data)
 
     # split data
-    X_train, X_test, y_train, y_test = train_test_split(df.drop("Diabetic", axis=1), df["Diabetic"], test_size=0.2, random_state=42)
+    # Seperate features and target
+    df_features = df.drop("Diabetic", axis=1)
+    df_target = df["Diabetic"]
+    X_train, X_test, y_train, y_test = train_test_split(df_features,
+                                                        df_target,
+                                                        test_size=0.2,
+                                                        random_state=42)
 
     # train model
     train_model(args.reg_rate, X_train, y_train)
 
 
-def get_csvs_df(path):    
+def get_csvs_df(path):
     # path = parent_dir + "/" + path
     if not os.path.exists(path):
         raise RuntimeError(f"Cannot use non-existent path provided: {path}")
@@ -69,7 +76,7 @@ def parse_args():
     # return args
     return args
 
-# run script
+
 if __name__ == "__main__":
     # add space in logs
     print("\n\n")

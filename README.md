@@ -25,19 +25,20 @@ Tasks:
 
 Workflow:   
 
-The production code is hosted in the main branch.
-A data scientist creates a feature branch for model development.
-The data scientist creates a pull request to propose to push changes to the main branch.
-When a pull request is created, a GitHub Actions workflow is triggered to verify the code.
-When the code passes linting and unit testing, the lead data scientist needs to approve the proposed changes.   
+1. The production code is hosted in the main branch.
+2. A data scientist creates a feature branch for model development.
+3. The data scientist creates a pull request to propose to push changes to the main branch.
+4. When a pull request is created, a GitHub Actions workflow is triggered to verify the code.
+5. When the code passes linting and unit testing, the lead data scientist needs to approve the proposed changes.   
 
 <img width="796" alt="Screenshot 2023-10-04 at 14 38 28" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/acd563d9-091c-4f6b-8294-5f40873f61af">   
 
-After the lead data scientist approves the changes, the pull request is merged, and the main branch is updated accordingly.   
+6. After the lead data scientist approves the changes, the pull request is merged, and the main branch is updated accordingly.   
 
 <img width="795" alt="Screenshot 2023-10-04 at 14 38 44" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/242e520a-8126-4841-995b-c2acc140f0f2">
 
-
+>[!Note]
+>The merging conflicts should be resolved first. That will allow the workflow to run successfully.
 
 ## Useful resources
 

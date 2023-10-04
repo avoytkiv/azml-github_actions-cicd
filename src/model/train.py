@@ -10,8 +10,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import mlflow
 
-from logs import get_logger
-from pathlib import Path
+
 import sys
 
 # Get the current script directory

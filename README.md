@@ -12,14 +12,28 @@ Workflow:
     - [x] Store the Azure credentials in a GitHub secret
     - [x] Define a GitHub Action in YAML
 - [x] Trigger GitHub Actions with feature-based development
+    - [x] Protect the main branch to block direct pushes to main
+    - [x] Create a new branch
+    - [x] Make a change and push it
+    - [x] Create a pull request and merge it into the main branch
 - [x] Work with linting and unit testing in GitHub Actions
+    - [x] Install the tool (Flake8 or Pytest)
+    - [x] Run the tests by specifying the folders within your repo that need to be checked.
 - [x] Work with environments in GitHub Actions
 - [x] Deploy a model with GitHub Action
 
 Running a training job:
 
-```shell
-az ad sp create-for-rbac --name "test-principal" --role contributor --scopes /subscriptions/a8c5d49d-e0aa-4576-97cc-fa6b18ce0f6a resourceGroups/RG001 --json-auth
-```
-   
-![job output](https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/c78084f5-3800-41d0-847b-de8d42d3f774)
+
+The production code is hosted in the main branch.
+A data scientist creates a feature branch for model development.
+The data scientist creates a pull request to propose to push changes to the main branch.
+When a pull request is created, a GitHub Actions workflow is triggered to verify the code.
+When the code passes linting and unit testing, the lead data scientist needs to approve the proposed changes.
+After the lead data scientist approves the changes, the pull request is merged, and the main branch is updated accordingly.
+
+## Useful resources
+
+- [Verify your code locally](https://learn.microsoft.com/en-us/training/modules/source-control-for-machine-learning-projects/5-verify-your-code-locally)
+- [Testing with pytest](https://learn.microsoft.com/en-us/training/modules/test-python-with-pytest/)
+- [Setting up linters in VS Code](https://py-vscode.readthedocs.io/en/latest/files/linting.html#:~:text=Setting%20Up%20Linters%20in%20VS%20Code&text=To%20set%20them%20up%3A,option%20Python%3ELinting%3AFlake8%20Enabled)

@@ -2,6 +2,7 @@ import logging
 from typing import Text, Union
 import sys
 
+
 def get_console_handler() -> logging.StreamHandler:
     """Get console handler.
     Returns:
@@ -23,7 +24,7 @@ def get_logger(
     """Get logger.
     Args:
         name {Text}: logger name
-        log_level {Text or int}: logging level; can be string name or integer value
+        log_level {Text or int}: logging level; can be string name or integer
     Returns:
         logging.Logger instance
     """
@@ -39,5 +40,3 @@ def get_logger(
     logger.propagate = False
 
     return logger
-
- 

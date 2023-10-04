@@ -23,7 +23,8 @@
 				"GitHub.copilot",
 				"ms-toolsai.vscode-ai-remote",
 				"ms-python.flake8",
-				"ms-python.pylint"
+				"ms-python.pylint",
+				"github.vscode-github-actions"
 			]
 		}
 	},

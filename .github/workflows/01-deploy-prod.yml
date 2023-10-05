@@ -21,32 +21,31 @@ jobs:
 
     - name: Deploy model to endpoint
       run: |
-        # Set default registry-name and workspace-name
-        az config set defaults.workspace-name=diabetes-prod-ws
-        az config set defaults.registry-name=RG001
 
-        # Set model name and endpoint name
         MODEL_NAME="diabetes_model"
         ENDPOINT_NAME="diabetes-mlflow-endpoint"
         WORKSPACE_NAME="diabetes-prod-ws"
         REGISTRY_NAME="RG001"
 
-        # Register the model (assuming model is saved and logged with MLflow)
         az ml model create \
         --name $MODEL_NAME \
         --type "mlflow_model" \
         --path src/model/model \
         --workspace-name $WORKSPACE_NAME \
         --registry-name $REGISTRY_NAME
+    
+    - name: Create endpoint
+      run: |
 
-        # Create an endpoint (assuming you have a deployment config file)
         az ml online-endpoint create \
         --name $ENDPOINT_NAME \
         -f "src/endpoint.yml" \
         --workspace-name $WORKSPACE_NAME \
         --registry-name $REGISTRY_NAME
+    
+    - name: Create deployment
+      run: |
 
-        # Create a deployment
         az ml online-deployment create \
         --name diabetes-deployment \
         --endpoint $ENDPOINT_NAME \
@@ -57,10 +56,9 @@ jobs:
 
     - name: Invoke endpoint
       run: |
-        # Set endpoint name
+
         ENDPOINT_NAME="diabetes-mlflow-endpoint"
 
-        # Invoke the endpoint
         az ml endpoint invoke \
         --name $ENDPOINT_NAME \
         --request-file src/request.json \

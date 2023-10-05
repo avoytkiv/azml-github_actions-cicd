@@ -30,7 +30,7 @@
         - The **production** job that trains the model in the production environment, using the production data (the diabetes-prod-folder data asset as input).
     - [x] Add a condition that the production job is only allowed to run when the experiment job ran successfully
 - [x] Deploy a model with GitHub Action
-    - [x] Package and register the model as an MLflow model.
+    - [x] Package and register the model as an MLflow model from the production job.
     - [x] Create an online (managed) endpoint.
     - [x] Test the deployed model automatically with the same GitHub Action workflow (ensure that the testing only happens when the model deployment is completed successfully).
 

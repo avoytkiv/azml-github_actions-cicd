@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+type: uri_folder
+name: diabetes-prod-folder
+description: The data folder in the production folder which contains a larger CSV file to train the model.
+path: ../production/data/

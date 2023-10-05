@@ -51,7 +51,7 @@ Using the Azure Machine Learning CLI (v2), I want to set up an automated workflo
 
 When logging a model with `mlflow.autologging()` during model training, the model is stored in the job output. Alternatively, I can store the model in an Azure Machine Learning datastore.
 
->[!Note] Registring with MLFlow facilitates the deployment
+>[!Note]  
 >When register the model as an MLflow type model, no need to provide a scoring script or environment to deploy the model.
 
 To register the model, point to either a job's output, or to a location in an Azure Machine Learning datastore.

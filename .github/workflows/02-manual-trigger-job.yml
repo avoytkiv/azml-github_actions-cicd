@@ -30,7 +30,6 @@ jobs:
         --resource-group RG001 \
         --workspace-name diabetes-dev-ws \
         --file "src/job_dev.yml" \
-        --stream
 
   production:
     needs: experiment # wait for experiment job to finish

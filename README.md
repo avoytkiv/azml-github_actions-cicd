@@ -98,7 +98,7 @@ The production environment is used for another part of the outer loop:
 
 <img width="795" alt="Screenshot 2023-10-04 at 14 38 44" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/242e520a-8126-4841-995b-c2acc140f0f2">
 
->[!Note]
+>[!Note]   
 >The merging conflicts should be resolved first. That will allow the workflow to run successfully.
 
 ## Useful commands

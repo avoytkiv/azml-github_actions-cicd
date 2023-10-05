@@ -28,7 +28,7 @@ jobs:
         az ml job create \
         --subscription bc61aa17-c60a-46b5-a008-fb2aec96507c \
         --resource-group RG001 \
-        --workspace-name diabetes-dev-ws \
+        --workspace-name WS001 \
         --file "src/job_dev.yml" \
 
   production:

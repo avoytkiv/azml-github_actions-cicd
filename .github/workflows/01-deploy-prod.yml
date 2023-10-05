@@ -1,0 +1,55 @@
+name: Deploy Model to Azure ML Endpoint
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+      
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+
+    - name: Deploy model to endpoint
+      run: |
+        # Set model name and endpoint name
+        MODEL_NAME="diabetes_model"
+        ENDPOINT_NAME="diabetes-mlflow-endpoint"
+
+        # Register the model (assuming model is saved and logged with MLflow)
+        az ml model register \
+        --name $MODEL_NAME \
+        --type "mlflow_model" \
+        --path src/model/model
+
+        # Create an endpoint (assuming you have a deployment config file)
+        az ml online-endpoint create \
+        --name $ENDPOINT_NAME \
+        -f "src/endpoint.yml"
+
+        # Create a deployment
+        az ml online-deployment create \
+        --name diabetes-deployment \
+        --endpoint $ENDPOINT_NAME \
+        -f "src/deploy.yaml" \
+        --all-traffic
+
+    - name: Invoke endpoint
+      run: |
+        # Set endpoint name
+        ENDPOINT_NAME="diabetes-mlflow-endpoint"
+
+        # Invoke the endpoint
+        az ml endpoint invoke \
+        --name $ENDPOINT_NAME \
+        --request-file src/request.json \
+        --response-file src/response.json

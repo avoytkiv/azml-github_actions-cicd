@@ -1,0 +1,4 @@
+$schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
+name: diabetes_model
+path: model/model/model.pkl
+description: Model created from local file.

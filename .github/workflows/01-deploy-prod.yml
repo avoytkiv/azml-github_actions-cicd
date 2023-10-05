@@ -26,7 +26,7 @@ jobs:
         ENDPOINT_NAME="diabetes-mlflow-endpoint"
 
         # Register the model (assuming model is saved and logged with MLflow)
-        az ml model register \
+        az ml model create \
         --name $MODEL_NAME \
         --type "mlflow_model" \
         --path src/model/model

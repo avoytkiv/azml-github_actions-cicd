@@ -25,6 +25,6 @@ jobs:
         --subscription bc61aa17-c60a-46b5-a008-fb2aec96507c \
         --resource-group RG001 \
         --workspace-name WS001 \
-        --file "/workspaces/azml-github_actions-cicd/src/job.yml"
+        --file "src/job.yml"
 
 

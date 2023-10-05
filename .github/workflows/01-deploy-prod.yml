@@ -21,6 +21,10 @@ jobs:
 
     - name: Deploy model to endpoint
       run: |
+        # Set default registry-name and workspace-name
+        az config set defaults.workspace-name=diabetes-prod-ws
+        az config set defaults.registry-name=RG001
+        
         # Set model name and endpoint name
         MODEL_NAME="diabetes_model"
         ENDPOINT_NAME="diabetes-mlflow-endpoint"

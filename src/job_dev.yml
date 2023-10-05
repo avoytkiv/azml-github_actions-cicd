@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 compute: azureml:cluster-cpu
 experiment_name: logistic-regression 
-description: Train diabetes classification model
+description: Train diabetes classification model in development
 
 inputs:
   training_data: 

@@ -1,0 +1,18 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+compute: azureml:cluster-cpu
+experiment_name: logistic-regression 
+description: Train diabetes classification model in production
+
+inputs:
+  training_data: 
+    type: uri_folder 
+    path: azureml:diabetes-prod-folder@latest
+  reg_rate: 0.01
+
+environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+
+code: model
+command: >-
+  python train.py 
+  --training_data ${{ inputs.training_data }}
+  --reg_rate ${{ inputs.reg_rate }}

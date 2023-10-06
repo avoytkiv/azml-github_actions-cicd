@@ -22,16 +22,16 @@ jobs:
     - name: Deploy model to endpoint
       run: |
 
-        MODEL_NAME="diabetes_model"
+        MODEL_NAME="diabetes-prod-model"
         ENDPOINT_NAME="diabetes-mlflow-endpoint"
         WORKSPACE_NAME="diabetes-prod-ws"
         REGISTRY_NAME="RG001"
 
-        az ml model create \
-        --name $MODEL_NAME \
-        --path azureml://jobs/serene_turtle_y0z2nmszp5/outputs/artifacts/src/model/model \
-        --workspace-name $WORKSPACE_NAME \
-        --registry-name $REGISTRY_NAME
+        # az ml model create \
+        # --name $MODEL_NAME \
+        # --path azureml://jobs/serene_turtle_y0z2nmszp5/outputs/artifacts/src/model/model \
+        # --workspace-name $WORKSPACE_NAME \
+        # --registry-name $REGISTRY_NAME
     
     - name: Create endpoint
       run: |

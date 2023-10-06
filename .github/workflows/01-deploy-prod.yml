@@ -40,7 +40,7 @@ jobs:
         --name "diabetes-mlflow-endpoint" \
         --file "src/endpoint.yml" \
         --workspace-name "diabetes-prod-ws" \
-        --registry-name "RG001"
+        --resource-group "RG001"
     
     - name: Create deployment
       run: |
@@ -50,7 +50,7 @@ jobs:
         --endpoint $ENDPOINT_NAME \
         --file "src/deploy.yaml" \
         --workspace-name $WORKSPACE_NAME \
-        --registry-name $REGISTRY_NAME
+        --resource-group $REGISTRY_NAME
         --all-traffic
 
     - name: Invoke endpoint
@@ -63,4 +63,4 @@ jobs:
         --request-file src/request.json \
         --response-file src/response.json \
         --workspace-name $WORKSPACE_NAME \
-        --registry-name $REGISTRY_NAME
+        --resource-group $REGISTRY_NAME

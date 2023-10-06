@@ -19,13 +19,17 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
 
+    - name: Set default environment variables
+      run: |
+
+        az account set --subscription bc61aa17-c60a-46b5-a008-fb2aec96507c
+        az configure --defaults workspace=diabetes-prod-ws group=RG001
+
     - name: Deploy model to endpoint
       run: |
 
         MODEL_NAME="diabetes-prod-model"
         ENDPOINT_NAME="diabetes-mlflow-endpoint"
-        WORKSPACE_NAME="diabetes-prod-ws"
-        REGISTRY_NAME="RG001"
 
         # az ml model create \
         # --name $MODEL_NAME \
@@ -48,8 +52,6 @@ jobs:
         az ml online-deployment create \
         --name diabetes-deployment \
         --file "src/deploy.yml" \
-        --workspace-name "diabetes-prod-ws" \
-        --resource-group "RG001" \
         --all-traffic
 
     - name: Invoke endpoint

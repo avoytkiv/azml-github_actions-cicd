@@ -45,7 +45,7 @@ jobs:
     - name: Create deployment
       run: |
 
-        az ml online-deployment create \
+        az ml online-deployment update \
         --name diabetes-deployment \
         --file "src/deploy.yml" \
         --all-traffic

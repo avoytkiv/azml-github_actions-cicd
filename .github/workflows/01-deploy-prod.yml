@@ -47,7 +47,6 @@ jobs:
 
         az ml online-deployment create \
         --name diabetes-deployment \
-        --endpoint $ENDPOINT_NAME \
         --file "src/deploy.yaml" \
         --workspace-name $WORKSPACE_NAME \
         --resource-group $REGISTRY_NAME

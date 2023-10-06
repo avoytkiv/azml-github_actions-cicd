@@ -56,6 +56,11 @@ When logging a model with `mlflow.autologging()` during model training, the mode
 
 To register the model, point to either a job's output, or to a location in an Azure Machine Learning datastore.
 
+>[!Warning]
+>Standard_DS1_v2 and Standard_F2s_v2 may be too small for bigger models and may
+>lead to container termination due to insufficient memory, not enough space on >the disk, or probe failure as it takes too long to initiate the container.
+
+
 Here is some testing data to use for the model:
 
 ```python

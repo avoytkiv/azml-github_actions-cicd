@@ -1,12 +1,7 @@
-# we're taking the model files from a local path. 
-# The files are all stored in a local folder called model. 
-# When this YAML is submitted to deploy the model to the endpoint diabetes-mlflow-endpoint, 
-# the model will be registered in the Azure Machine Learning workspace as mlflow-sklearn-model, version 1.
-
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 name: diabetes-deployment
 endpoint_name: diabetes-mlflow-endpoint
 model: azureml:diabetes-prod-model:1
   
-instance_type: Standard_DS3_v2
+instance_type: Standard_D2as_v4
 instance_count: 1

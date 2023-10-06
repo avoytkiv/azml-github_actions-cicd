@@ -9,7 +9,7 @@ endpoint_name: diabetes-mlflow-endpoint
 model:
   name: diabetes-prod-model
   version: 1
-  path: src/model/model
+  path: model/model
   type: mlflow_model
 instance_type: Standard_DS3_v2
 instance_count: 1

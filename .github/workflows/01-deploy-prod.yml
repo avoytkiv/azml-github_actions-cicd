@@ -37,10 +37,10 @@ jobs:
       run: |
 
         az ml online-endpoint create \
-        --name $ENDPOINT_NAME \
-        -f "src/endpoint.yml" \
-        --workspace-name $WORKSPACE_NAME \
-        --registry-name $REGISTRY_NAME
+        --name "diabetes-mlflow-endpoint" \
+        --file "src/endpoint.yml" \
+        --workspace-name "diabetes-prod-ws" \
+        --registry-name "RG001"
     
     - name: Create deployment
       run: |
@@ -48,7 +48,7 @@ jobs:
         az ml online-deployment create \
         --name diabetes-deployment \
         --endpoint $ENDPOINT_NAME \
-        -f "src/deploy.yaml" \
+        --file "src/deploy.yaml" \
         --workspace-name $WORKSPACE_NAME \
         --registry-name $REGISTRY_NAME
         --all-traffic

@@ -7,7 +7,7 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: sklearn-deployment
 endpoint_name: diabetes-mlflow-endpoint
 model:
-  name: diabetes-model
+  name: diabetes-prod-model
   version: 1
   path: src/model/model
   type: mlflow_model

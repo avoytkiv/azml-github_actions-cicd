@@ -36,11 +36,11 @@ jobs:
     - name: Create endpoint
       run: |
 
-        az ml online-endpoint create \
-        --name "diabetes-mlflow-endpoint" \
-        --file "src/endpoint.yml" \
-        --workspace-name "diabetes-prod-ws" \
-        --resource-group "RG001"
+        # az ml online-endpoint create \
+        # --name "diabetes-mlflow-endpoint" \
+        # --file "src/endpoint.yml" \
+        # --workspace-name "diabetes-prod-ws" \
+        # --resource-group "RG001"
     
     - name: Create deployment
       run: |
@@ -48,8 +48,8 @@ jobs:
         az ml online-deployment create \
         --name diabetes-deployment \
         --file "src/deploy.yaml" \
-        --workspace-name $WORKSPACE_NAME \
-        --resource-group $REGISTRY_NAME
+        --workspace-name "diabetes-prod-ws" \
+        --resource-group "RG001" \
         --all-traffic
 
     - name: Invoke endpoint

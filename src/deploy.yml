@@ -9,7 +9,7 @@ endpoint_name: diabetes-mlflow-endpoint
 model:
   name: diabetes-prod-model
   version: 1
-  path: model/model
+  path: azureml:azureml_placid_rainbow_m9njffj8px_output_mlflow_log_model_2026513188:1
   type: mlflow_model
 instance_type: Standard_DS3_v2
 instance_count: 1

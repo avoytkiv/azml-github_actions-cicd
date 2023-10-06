@@ -29,8 +29,7 @@ jobs:
 
         az ml model create \
         --name $MODEL_NAME \
-        --type "mlflow_model" \
-        --path src/model/model \
+        --path azureml://jobs/serene_turtle_y0z2nmszp5/outputs/artifacts/src/model/model \
         --workspace-name $WORKSPACE_NAME \
         --registry-name $REGISTRY_NAME
     

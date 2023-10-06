@@ -34,8 +34,6 @@ jobs:
         # az ml model create \
         # --name $MODEL_NAME \
         # --path azureml://jobs/serene_turtle_y0z2nmszp5/outputs/artifacts/src/model/model \
-        # --workspace-name $WORKSPACE_NAME \
-        # --registry-name $REGISTRY_NAME
     
     - name: Create endpoint
       run: |
@@ -43,8 +41,6 @@ jobs:
         # az ml online-endpoint create \
         # --name "diabetes-mlflow-endpoint" \
         # --file "src/endpoint.yml" \
-        # --workspace-name "diabetes-prod-ws" \
-        # --resource-group "RG001"
     
     - name: Create deployment
       run: |
@@ -63,5 +59,3 @@ jobs:
         --name $ENDPOINT_NAME \
         --request-file src/request.json \
         --response-file src/response.json \
-        --workspace-name $WORKSPACE_NAME \
-        --resource-group $REGISTRY_NAME

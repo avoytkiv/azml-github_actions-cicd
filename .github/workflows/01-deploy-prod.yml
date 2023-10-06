@@ -57,5 +57,5 @@ jobs:
 
         az ml endpoint invoke \
         --name $ENDPOINT_NAME \
-        --request-file src/request.json \
-        --response-file src/response.json \
+        --request-file request.json \
+        --response-file response.json \

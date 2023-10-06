@@ -3,5 +3,5 @@ name: diabetes-deployment
 endpoint_name: diabetes-mlflow-endpoint
 model: azureml:diabetes-prod-model:1
   
-instance_type: Standard_D2as_v4
+instance_type: Standard_DS11_v2
 instance_count: 1

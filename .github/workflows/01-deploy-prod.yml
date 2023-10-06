@@ -47,7 +47,7 @@ jobs:
 
         az ml online-deployment create \
         --name diabetes-deployment \
-        --file "src/deploy.yaml" \
+        --file "src/deploy.yml" \
         --workspace-name "diabetes-prod-ws" \
         --resource-group "RG001" \
         --all-traffic

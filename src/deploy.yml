@@ -6,11 +6,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 name: diabetes-deployment
 endpoint_name: diabetes-mlflow-endpoint
-model:
-  name: diabetes-prod-model
-  version: 1
-  type: mlflow_model
-  # path: azureml:azureml_placid_rainbow_m9njffj8px_output_mlflow_log_model_2026513188:1
+model: azureml:diabetes-prod-model:1
   
 instance_type: Standard_DS3_v2
 instance_count: 1

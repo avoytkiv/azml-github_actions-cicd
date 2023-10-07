@@ -9,6 +9,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import mlflow
+from mlflow.models import infer_signature
 
 
 import sys
@@ -41,10 +42,18 @@ def main(args):
     # train model
     model = train_model(args.reg_rate, X_train, y_train)
 
+    # Signature
+    signature = infer_signature(X_test, y_test)
+
+    # Sample
+    input_example = X_train.sample(n=1)
+
     mlflow.sklearn.log_model(
         sk_model=model,
         artifact_path="model",
-        conda_env="conda_env.yml"
+        conda_env="conda_env.yml",
+        signature=signature,
+        input_example=input_example
     )
 
 

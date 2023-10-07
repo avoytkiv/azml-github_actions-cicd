@@ -24,7 +24,7 @@ sys.path.append(parent_dir)
 def main(args):
 
     # TO DO: enable autologging
-    mlflow.sklearn.autolog()
+    mlflow.sklearn.autolog(log_models=False)
 
     # read data
     df = get_csvs_df(args.training_data)
@@ -39,7 +39,13 @@ def main(args):
                                                         random_state=42)
 
     # train model
-    train_model(args.reg_rate, X_train, y_train)
+    model = train_model(args.reg_rate, X_train, y_train)
+
+    mlflow.sklearn.log_model(
+        sk_model=model,
+        artifact_path="model",
+        conda_env="conda_env.yml"
+    )
 
 
 def get_csvs_df(path):
@@ -57,7 +63,9 @@ def get_csvs_df(path):
 
 def train_model(reg_rate, X_train, y_train):
     # train model
-    LogisticRegression(C=1/reg_rate, solver="liblinear").fit(X_train, y_train)
+    model = LogisticRegression(C=1/reg_rate, solver="liblinear")
+    model.fit(X_train, y_train)
+    return model
 
 
 def parse_args():

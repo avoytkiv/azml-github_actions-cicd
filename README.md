@@ -116,9 +116,11 @@ az ad sp create-for-rbac --name "<service-principal-name>" --role contributor \
 --json-auth
 ```
 
-az ad sp create-for-rbac --name "diabetes-dev-principal" --role contributor \
---scopes /subscriptions/bc61aa17-c60a-46b5-a008-fb2aec96507c/resourceGroups/RG001 \
---json-auth
+Get logs from building the image during deployment:  
+
+```bash
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
+```
 
 ## Useful resources
 

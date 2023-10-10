@@ -1,4 +1,4 @@
-# azml-github_actions-cicd
+# End-to-end MLOPs with Azure ML
 
 **Tasks:**      
 

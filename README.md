@@ -37,6 +37,21 @@
 
 ### Use an Azure Machine Learning job for automation
 
+Workflow:   
+
+1. The production code is hosted in the main branch.
+2. A data scientist creates a feature branch for model development.
+3. The data scientist creates a pull request to propose to push changes to the main branch.
+4. When a pull request is created, a GitHub Actions workflow is triggered to verify the code.
+5. When the code passes linting and unit testing, the lead data scientist needs to approve the proposed changes.   
+
+
+<img width="796" alt="Screenshot 2023-10-04 at 14 38 28" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/acd563d9-091c-4f6b-8294-5f40873f61af">   
+
+6. After the lead data scientist approves the changes, the pull request is merged, and the main branch is updated accordingly.   
+
+<img width="795" alt="Screenshot 2023-10-04 at 14 38 44" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/242e520a-8126-4841-995b-c2acc140f0f2">
+
 ### Trigger Azure Machine Learning jobs with GitHub Actions
 
 ### Trigger GitHub Actions with feature-based development
@@ -44,6 +59,23 @@
 ### Work with linting and unit testing in GitHub Actions
 
 ### Work with environments in GitHub Actions
+
+Ideally, we don’t want to make the production data available in the experimentation (development) environment. Instead, data scientists will only have access to a small dataset which should behave similarly to the production dataset.
+
+By reusing the training script, I can train the model in the production environment using the production data, simply by changing the data input.
+
+The development environment is used for the inner loop:
+- Data scientists train the model.
+- The model is packaged and registered.
+
+The staging environment is used for part of the outer loop:
+- Test the code and model with linting and unit testing.
+- Deploy the model to test the endpoint.
+
+The production environment is used for another part of the outer loop:
+- Deploy the model to the production endpoint. The production endpoint is integrated with the web application.
+- Monitor the model and endpoint performance to trigger retraining when necessary.
+
 
 ### Deploy a model with GitHub Action
 
@@ -68,40 +100,7 @@ Pregnancies,PlasmaGlucose,DiastolicBloodPressure,TricepsThickness,SerumInsulin,B
 9,104,51,7,24,27.36983156,1.350472047,43
 6,73,61,35,24,18.74367404,1.074147566,75
 4,115,50,29,243,34.69215364,0.741159926,59
-```
-
-
-Workflow:   
-
-1. The production code is hosted in the main branch.
-2. A data scientist creates a feature branch for model development.
-3. The data scientist creates a pull request to propose to push changes to the main branch.
-4. When a pull request is created, a GitHub Actions workflow is triggered to verify the code.
-5. When the code passes linting and unit testing, the lead data scientist needs to approve the proposed changes.   
-
-**Different environments are used for different parts of the workflow:**
-
-Ideally, we don’t want to make the production data available in the experimentation (development) environment. Instead, data scientists will only have access to a small dataset which should behave similarly to the production dataset.
-
-By reusing the training script, I can train the model in the production environment using the production data, simply by changing the data input.
-
-The development environment is used for the inner loop:
-- Data scientists train the model.
-- The model is packaged and registered.
-
-The staging environment is used for part of the outer loop:
-- Test the code and model with linting and unit testing.
-- Deploy the model to test the endpoint.
-
-The production environment is used for another part of the outer loop:
-- Deploy the model to the production endpoint. The production endpoint is integrated with the web application.
-- Monitor the model and endpoint performance to trigger retraining when necessary.
-
-<img width="796" alt="Screenshot 2023-10-04 at 14 38 28" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/acd563d9-091c-4f6b-8294-5f40873f61af">   
-
-6. After the lead data scientist approves the changes, the pull request is merged, and the main branch is updated accordingly.   
-
-<img width="795" alt="Screenshot 2023-10-04 at 14 38 44" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/242e520a-8126-4841-995b-c2acc140f0f2">
+```   
 
 >[!Note]   
 >The merging conflicts should be resolved first. That will allow the workflow to run successfully.

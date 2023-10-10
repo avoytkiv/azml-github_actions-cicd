@@ -1,4 +1,4 @@
-name: Deploy Model to Azure ML Endpoint
+name: Deploy to Azure ML
 
 on:
   workflow_dispatch:
@@ -31,16 +31,16 @@ jobs:
         MODEL_NAME="diabetes-prod-model"
         ENDPOINT_NAME="diabetes-mlflow-endpoint"
 
-        # az ml model create \
-        # --name $MODEL_NAME \
-        # --path azureml://jobs/serene_turtle_y0z2nmszp5/outputs/artifacts/src/model/model \
+        az ml model create \
+        --name $MODEL_NAME \
+        --path azureml://jobs/serene_turtle_y0z2nmszp5/outputs/artifacts/src/model/model \ # TODO: Update this path to your model
     
     - name: Create endpoint
       run: |
 
-        # az ml online-endpoint create \
-        # --name "diabetes-mlflow-endpoint" \
-        # --file "src/endpoint.yml" \
+        az ml online-endpoint create \ # Change to update 
+        --name "diabetes-mlflow-endpoint" \
+        --file "src/endpoint.yml" \
     
     - name: Create deployment
       run: |

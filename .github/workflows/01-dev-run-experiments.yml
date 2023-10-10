@@ -1,0 +1,37 @@
+name: Run training job in Azure ML dev environment
+
+on:
+  push:
+    branches: dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+      
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+
+    - name: Set default environment variables
+      run: |
+        az account set --subscription bc61aa17-c60a-46b5-a008-fb2aec96507c
+        az configure --defaults workspace=diabetes-dev-ws group=RG001
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Trigger Azure ML development job
+      run: |
+          az ml job create --file "src/job_dev.yml" 
+
+    

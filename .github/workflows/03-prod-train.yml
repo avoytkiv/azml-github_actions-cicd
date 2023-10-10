@@ -1,0 +1,33 @@
+name: Trigger Azure ML production job on push to main
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+    - name: Install az ml extension
+      run: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Trigger Azure ML production job
+      run: |
+        az ml job create \
+        --subscription bc61aa17-c60a-46b5-a008-fb2aec96507c \
+        --resource-group RG001 \
+        --workspace-name diabetes-prod-ws \
+        --file "src/job_prod.yml" \
+    

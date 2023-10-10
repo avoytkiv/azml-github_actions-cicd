@@ -52,14 +52,6 @@ Workflow:
 
 <img width="795" alt="Screenshot 2023-10-04 at 14 38 44" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/242e520a-8126-4841-995b-c2acc140f0f2">
 
-### Trigger Azure Machine Learning jobs with GitHub Actions
-
-### Trigger GitHub Actions with feature-based development
-
-### Work with linting and unit testing in GitHub Actions
-
-### Work with environments in GitHub Actions
-
 Ideally, we don’t want to make the production data available in the experimentation (development) environment. Instead, data scientists will only have access to a small dataset which should behave similarly to the production dataset.
 
 By reusing the training script, I can train the model in the production environment using the production data, simply by changing the data input.

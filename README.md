@@ -3,7 +3,7 @@
 **Tasks:**      
 
 - [x] Convert a notebook to production code	
-- [x] [Use an Azure Machine Learning job for automation](#Use-an-Azure-Machine-Learning-job-for-automation)
+- [x] Use an Azure Machine Learning job for automation
     - [x] Create a compute cluster
     - [x] Register a data asset 
     - [x] Create a job that takes the data asset as input and train script as a command

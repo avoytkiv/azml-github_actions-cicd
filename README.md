@@ -1,5 +1,8 @@
 # End-to-end MLOPs with Azure ML
 
+<img width="982" alt="Screenshot 2023-10-11 at 12 16 46" src="https://github.com/avoytkiv/azml-github_actions-cicd/assets/74664634/5a413f01-1cb0-4400-b0a2-8ad913f743b1">  
+
+
 **Tasks:**      
 
 - [x] Convert a notebook to production code	
